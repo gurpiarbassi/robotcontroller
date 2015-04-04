@@ -1,6 +1,6 @@
 package com.gurps.robotcontrol.domain;
 
-public class GridIndexOutOfBoundsException extends Exception {
+public class GridIndexOutOfBoundsException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 

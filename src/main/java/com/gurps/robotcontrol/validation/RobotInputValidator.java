@@ -1,5 +1,7 @@
 package com.gurps.robotcontrol.validation;
 
+import javax.validation.constraints.NotNull;
+
 import com.gurps.robotcontrol.domain.Direction;
 import com.gurps.robotcontrol.domain.RobotCommand;
 
@@ -44,6 +46,20 @@ public class RobotInputValidator {
 		regex.append(RobotCommand.M.name());
 		regex.append("]*$");
 		return regex.toString();
+	}
+	
+	public static boolean isValidCommandString(@NotNull final String commandString){
+		if(!isEmpty(commandString)){
+			return commandString.matches(REGEX_ACCEPTABLE_COMMANDS);
+		}
+		return false;
+	}
+	
+	public static boolean isValidInitialPosition(@NotNull final String initialPosition){
+		if(!isEmpty(initialPosition)){
+			return initialPosition.matches(REGEX_INITIAL_POSITION);
+		}
+		return false;
 	}
 	
 	

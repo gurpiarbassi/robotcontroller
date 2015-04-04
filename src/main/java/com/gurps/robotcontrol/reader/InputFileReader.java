@@ -3,6 +3,8 @@ package com.gurps.robotcontrol.reader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Paths;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 import javax.validation.constraints.NotNull;
@@ -15,6 +17,8 @@ public class InputFileReader {
 	private String inputFilename;
 	private int xGridMax;
 	private int yGridMax;
+	
+	private Queue<RobotCommandPair> instructionQueue = new LinkedList<RobotCommandPair>();
 	
 	public InputFileReader(@NotNull String inputFilename) {
 		this.inputFilename = inputFilename;
@@ -41,12 +45,25 @@ public class InputFileReader {
             		this.xGridMax = Integer.valueOf(tokens[0]);
             		this.yGridMax = Integer.valueOf(tokens[1]);
 	                
+            		
 	                while (scanner.hasNextLine()) {
 	                	//first robot line is the initial position on the grid e.g. 1 2 N
+	                	String positionInput = scanner.nextLine();
+	                	String commandInput = scanner.nextLine();
+	                	if(!RobotInputValidator.isValidInitialPosition(positionInput)){
+	                		throw new InvalidInputException(positionInput, "Invalid initial position!");
+	                	}
+	                	else if(!RobotInputValidator.isValidCommandString(commandInput)){
+	                		throw new InvalidInputException(commandInput, "Invalid command string!");
+	                	}
+	                	RobotCommandPair rcPair = new RobotCommandPair(positionInput, commandInput);
+	                	instructionQueue.offer(rcPair);
 	                }
 	            }
 	        }
 	    }
+
+	
 
 	public int getxGridMax() {
 		return xGridMax;
@@ -56,6 +73,9 @@ public class InputFileReader {
 		return yGridMax;
 	}
 
+	public Queue<RobotCommandPair> getInstructionQueue() {
+		return instructionQueue;
+	}
 	
 }
 

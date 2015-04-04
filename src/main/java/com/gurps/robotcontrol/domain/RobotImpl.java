@@ -55,7 +55,7 @@ public class RobotImpl implements Robot {
 	 * This method moves the robot forward one square in the direction it is facing.
 	 * @exception GridIndexOutOfBoundsException if the robot 'could' go off the grid with this movement forward.
 	 **/
-	public void forward() throws GridIndexOutOfBoundsException {
+	public void forward()  {
 		switch (direction) {
 		case N:
 			if (grid.isValidPosition(position.getX(), position.getY() + 1)) {

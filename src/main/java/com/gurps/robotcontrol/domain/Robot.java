@@ -12,7 +12,7 @@ public interface Robot {
 
 	void turnRight();
 
-	void forward() throws GridIndexOutOfBoundsException;
+	void forward();
 	
     Point getPosition() ;
 

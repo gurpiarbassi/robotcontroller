@@ -10,16 +10,17 @@ public class InvalidInputException extends RuntimeException{
 	private static final long serialVersionUID = -8183236610259236080L;
 
 	private String input;
-	private String message;
+	
 	
 	public InvalidInputException(String input, String message){
+		super(message);
 		this.input = input;
-		this.message = message;
+		
 	}
 	
 	@Override
 	public String getMessage() {
-		return String.format("Invalid input: [%s] - %s", input, message);
+		return String.format("Invalid input: [%s] - %s", input, getMessage());
 	}
 
 }
