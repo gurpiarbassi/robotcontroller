@@ -9,7 +9,7 @@ To build: mvn clean compile assembly:single This will produce a jar file in the 
 Compiler level mut be java 1.8
 
 
-h3. Assumptions made
+## Assumptions made
 
 Robots may collide with one another but we assume they trample over each other and carry on
 
