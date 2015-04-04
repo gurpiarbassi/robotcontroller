@@ -8,6 +8,8 @@ To build: mvn clean compile assembly:single This will produce a jar file in the 
 
 Compiler level mut be java 1.8
 
+To run: java -jar Gurps-robot-controller.jar /path/to/file/file.txt
+Where the path to the input file is the argument to the main class.
 
 ## Assumptions made
 
