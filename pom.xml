@@ -58,7 +58,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.gurps.cmdsocial.Application</mainClass>
+							<mainClass>com.gurps.robotcontroller.RobotController</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
