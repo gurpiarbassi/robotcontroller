@@ -58,7 +58,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.gurps.robotcontroller.RobotController</mainClass>
+							<mainClass>com.gurps.robotcontrol.RobotController</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
