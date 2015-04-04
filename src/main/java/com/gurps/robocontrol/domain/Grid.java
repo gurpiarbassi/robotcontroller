@@ -39,8 +39,8 @@ public final class Grid {
 	 *            The furthest point along the y axis
 	 */
 	public void init(int maxX, int maxY) {
-		if(maxX <=0 || maxY<=0){
-			throw new IllegalArgumentException("maxX and maxY must be greater than 0");
+		if(maxX <=0 || maxY<=0 || maxX > Integer.MAX_VALUE || maxY > Integer.MAX_VALUE){
+			throw new IllegalArgumentException("maxX and maxY must be greater than 0 and a valid integer");
 		}
 		init(0, 0, maxX, maxY);
 	}
@@ -59,7 +59,7 @@ public final class Grid {
 	 *            The furthest point along the y axis
 	 */
 	public void init(int minX, int minY, int maxX, int maxY) {
-		if(maxX < minX || maxY < minY){
+		if(maxX < minX || maxY < minY || maxX > Integer.MAX_VALUE || maxY > Integer.MAX_VALUE || minX < Integer.MIN_VALUE || minY < Integer.MIN_VALUE){
 			throw new IllegalArgumentException("Invalid grid dimensions");
 		}
 		this.maxX = maxX;

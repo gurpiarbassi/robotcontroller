@@ -2,7 +2,7 @@ package com.gurps.robocontrol.domain;
 
 
 /**
- * Concrete implementation of Robot interface with Grid traversal behaviour
+ * Concrete implementation of Robot interface with Grid traversal behavior
  * 
  * @author gurpiarbassi
  *
@@ -83,6 +83,10 @@ public class RobotImpl implements Robot {
 	}
 
 	@Override
+	/**
+	 * This method moves the robot forward one square in the direction it is facing.
+	 * @exception GridIndexOutOfBoundsException if the robot 'could' go off the grid with this movement forward.
+	 **/
 	public void forward() throws GridIndexOutOfBoundsException {
 		switch (direction) {
 		case N:
