@@ -1,5 +1,6 @@
 package com.gurps.robotcontrol;
 
+import java.io.IOException;
 import java.util.Queue;
 
 import com.gurps.robotcontrol.domain.Direction;
@@ -28,7 +29,7 @@ public class RobotController {
 	 *                thrown if any problem occurs in parsing the input file
 	 * 
 	 */
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args)  {
 		try {
 			System.out.println("Starting Robot Program...");
 
@@ -76,6 +77,8 @@ public class RobotController {
 				
 			}
 
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			System.out.println("Ending Robot Program...");
 		}

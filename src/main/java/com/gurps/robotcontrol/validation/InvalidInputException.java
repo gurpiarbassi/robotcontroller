@@ -11,16 +11,16 @@ public class InvalidInputException extends RuntimeException{
 
 	private String input;
 	
-	
+	private String message;
 	public InvalidInputException(String input, String message){
-		super(message);
+		this.message = message;
 		this.input = input;
 		
 	}
 	
 	@Override
 	public String getMessage() {
-		return String.format("Invalid input: [%s] - %s", input, getMessage());
+		return String.format("Invalid input: [%s] - %s", input, message);
 	}
 
 }

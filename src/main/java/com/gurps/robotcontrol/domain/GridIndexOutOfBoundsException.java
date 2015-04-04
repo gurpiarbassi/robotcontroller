@@ -6,11 +6,12 @@ public class GridIndexOutOfBoundsException extends RuntimeException {
 
 	private int x;
 	private int y;
+	private String message;
 	
 	public GridIndexOutOfBoundsException(final int x, final int y, final String message) {
-		super(message);
 		this.x = x;
 		this.y = y;
+		this.message = message;
 	}
 
 	public int getX() {
@@ -19,6 +20,10 @@ public class GridIndexOutOfBoundsException extends RuntimeException {
 
 	public int getY() {
 		return y;
+	}
+	
+	public String getMessage(){
+		return String.format("Invalid input: [%s,%s] - %s", x, y, message);
 	}
 	
 }
