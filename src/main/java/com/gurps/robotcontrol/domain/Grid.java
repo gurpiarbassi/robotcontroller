@@ -1,4 +1,4 @@
-package com.gurps.robocontrol.domain;
+package com.gurps.robotcontrol.domain;
 
 /**
  * Represents a 2 dimensional mathematical grid object with an x and y axis. This

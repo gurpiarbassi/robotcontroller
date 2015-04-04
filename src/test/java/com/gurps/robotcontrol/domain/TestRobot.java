@@ -1,4 +1,4 @@
-package robotcontroller;
+package com.gurps.robotcontrol.domain;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -6,12 +6,12 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
-import com.gurps.robocontrol.domain.Direction;
-import com.gurps.robocontrol.domain.Grid;
-import com.gurps.robocontrol.domain.GridIndexOutOfBoundsException;
-import com.gurps.robocontrol.domain.Point;
-import com.gurps.robocontrol.domain.Robot;
-import com.gurps.robocontrol.domain.RobotFactory;
+import com.gurps.robotcontrol.domain.Direction;
+import com.gurps.robotcontrol.domain.Grid;
+import com.gurps.robotcontrol.domain.GridIndexOutOfBoundsException;
+import com.gurps.robotcontrol.domain.Point;
+import com.gurps.robotcontrol.domain.Robot;
+import com.gurps.robotcontrol.domain.RobotFactory;
 
 public class TestRobot {
 

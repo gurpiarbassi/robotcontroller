@@ -1,4 +1,4 @@
-package com.gurps.robocontrol.domain;
+package com.gurps.robotcontrol.domain;
 
 /**
  * Represents the robots valid input parameters
