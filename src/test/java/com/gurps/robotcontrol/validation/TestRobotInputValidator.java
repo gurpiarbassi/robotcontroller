@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class TestRobotInputValidator {
-	
+
 	@Test
 	/**
 	 * Test to ensure the command string is correctly validated
@@ -15,7 +15,7 @@ public class TestRobotInputValidator {
 		boolean result = RobotInputValidator.isValidCommandString("RRLLMMMM");
 		assertTrue(result);
 	}
-	
+
 	@Test
 	/**
 	 * Test to ensure that an empty command sring fails validation
@@ -24,7 +24,7 @@ public class TestRobotInputValidator {
 		boolean result = RobotInputValidator.isValidCommandString("");
 		assertFalse(result);
 	}
-	
+
 	@Test
 	/**
 	 * Test to ensure invalid commands are caught
@@ -33,7 +33,7 @@ public class TestRobotInputValidator {
 		boolean result = RobotInputValidator.isValidCommandString("LLRBMMMM");
 		assertFalse(result);
 	}
-	
+
 	@Test
 	/**
 	 * Test to ensure spaces not allowed in command string
@@ -42,7 +42,7 @@ public class TestRobotInputValidator {
 		boolean result = RobotInputValidator.isValidCommandString("LLRM MMMM");
 		assertFalse(result);
 	}
-	
+
 	@Test
 	/**
 	 * Test to ensure a valid initial position is accepted
@@ -51,7 +51,7 @@ public class TestRobotInputValidator {
 		boolean result = RobotInputValidator.isValidInitialPosition("1 5 E");
 		assertTrue(result);
 	}
-	
+
 	@Test
 	/**
 	 * Test to ensure a invalid direction in the initial position is rejected in validation
@@ -60,7 +60,7 @@ public class TestRobotInputValidator {
 		boolean result = RobotInputValidator.isValidInitialPosition("1 5 G");
 		assertFalse(result);
 	}
-	
+
 	@Test
 	/**
 	 * Test to ensure the initial position x and y coordinates are integers
@@ -69,7 +69,7 @@ public class TestRobotInputValidator {
 		boolean result = RobotInputValidator.isValidInitialPosition("A B G");
 		assertFalse(result);
 	}
-	
+
 	@Test
 	/**
 	 * Test to ensure the grid max point is valid
@@ -78,7 +78,7 @@ public class TestRobotInputValidator {
 		boolean result = RobotInputValidator.isValidGridMaxPoint("5 5");
 		assertTrue(result);
 	}
-	
+
 	@Test
 	/**
 	 * Test to ensure the grid max point is valid
