@@ -5,7 +5,7 @@ import com.gurps.robotcontrol.domain.Point;
 
 public class OutputFormatter {
 
-	public static String format(Point position, Direction direction){
+	public static String format(Point position, Direction direction) {
 		return position.getX() + " " + position.getY() + " " + direction.name();
 	}
 }
