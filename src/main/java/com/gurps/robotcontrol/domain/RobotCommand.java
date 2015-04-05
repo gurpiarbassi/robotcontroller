@@ -8,7 +8,7 @@ package com.gurps.robotcontrol.domain;
  */
 public enum RobotCommand {
 
-	L, //left
-	R, //right
-	M //move
+	L, // left
+	R, // right
+	M // move
 }
