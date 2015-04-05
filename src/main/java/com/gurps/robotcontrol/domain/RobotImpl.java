@@ -21,10 +21,10 @@ public class RobotImpl implements Robot {
 	 * @param direction
 	 *            the current direction the robot is facing
 	 */
-	public RobotImpl(final Point position, final Direction direction) {
+	public RobotImpl(final Point initialPosition, final Direction direction) {
 		super();
 		grid = Grid.getInstance();
-		this.position = position;
+		this.position = initialPosition;
 		this.direction = direction;
 	}
 
@@ -58,37 +58,37 @@ public class RobotImpl implements Robot {
 	private void forward() {
 		switch (direction) {
 		case N:
-			if (grid.isValidPosition(position.getX(), position.getY() + 1)) {
+			if (grid.isValidPosition(new Point(position.getX(), position.getY() + 1))) {
 				position.plusY(1);
 			} else {
-				throw new GridIndexOutOfBoundsException(position.getX(), position.getY() + 1,
+				throw new GridIndexOutOfBoundsException(new Point(position.getX(), position.getY() + 1),
 						"Moving this way will take you to (" + position.getX() + ","
 								+ (position.getY() + 1) + ")");
 			}
 			break;
 		case E:
-			if (grid.isValidPosition(position.getX() + 1, position.getY())) {
+			if (grid.isValidPosition(new Point(position.getX() + 1, position.getY()))) {
 				position.plusX(1);
 			} else {
-				throw new GridIndexOutOfBoundsException(position.getX() + 1, position.getY(),
+				throw new GridIndexOutOfBoundsException(new Point(position.getX() + 1, position.getY()),
 						"Moving this way will take you to (" + (position.getX() + 1) + ","
 								+ position.getY() + ")");
 			}
 			break;
 		case S:
-			if (grid.isValidPosition(position.getX(), position.getY() - 1)) {
+			if (grid.isValidPosition(new Point(position.getX(), position.getY() - 1))) {
 				position.plusY(-1);
 			} else {
-				throw new GridIndexOutOfBoundsException(position.getX(), position.getY() - 1,
+				throw new GridIndexOutOfBoundsException(new Point(position.getX(), position.getY() - 1),
 						"Moving this way will take you to (" + position.getX() + ","
 								+ (position.getY() - 1) + ")");
 			}
 			break;
 		case W:
-			if (grid.isValidPosition(position.getX() - 1, position.getY())) {
+			if (grid.isValidPosition(new Point(position.getX() - 1, position.getY()))) {
 				position.plusX(-1);
 			} else {
-				throw new GridIndexOutOfBoundsException(position.getX() - 1, position.getY(),
+				throw new GridIndexOutOfBoundsException(new Point(position.getX() - 1, position.getY()),
 						"Moving this way will take you to (" + (position.getX() - 1) + ","
 								+ position.getY() + ")");
 			}
@@ -98,6 +98,10 @@ public class RobotImpl implements Robot {
 	}
 
 	@Override
+	/**
+	 * Executes a single command
+	 * @param command A RobotCommand
+	 */
 	public void executeCommand(RobotCommand command) {
 		switch (command) {
 		case L:
@@ -111,9 +115,10 @@ public class RobotImpl implements Robot {
 		case M:
 			forward();
 			break;
-		
-		default :
-				throw new UnsupportedOperationException("operation " + command.name() + " is not supported by this robot implementation");
+
+		default:
+			throw new UnsupportedOperationException("operation " + command.name()
+					+ " is not supported by this robot implementation");
 		}
 	}
 }

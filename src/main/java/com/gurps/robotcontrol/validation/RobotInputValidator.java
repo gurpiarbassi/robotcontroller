@@ -7,19 +7,20 @@ import com.gurps.robotcontrol.domain.RobotCommand;
 
 /**
  * Validation utility to validate input string.
+ * 
  * @author gurpiarbassi
  *
  */
 public class RobotInputValidator {
 
 	private static String REGEX_GRID_MAX_SETTING = "^[0-9]+ [0-9]+$";
-	
-	public static final String REGEX_INITIAL_POSITION = buildInitialPositionRegex();	
+
+	public static final String REGEX_INITIAL_POSITION = buildInitialPositionRegex();
 	public static final String REGEX_ACCEPTABLE_COMMANDS = buildCommandsRegex();
-	
-	
+
 	/**
 	 * Construct the regex dynamically based on the enum names
+	 * 
 	 * @return regex used to validate the initial robot position
 	 */
 	private static final String buildInitialPositionRegex() {
@@ -32,10 +33,10 @@ public class RobotInputValidator {
 		regex.append("]?$");
 		return regex.toString();
 	}
-	
-	
+
 	/**
 	 * Construct the regex dynamically based on the enum names
+	 * 
 	 * @return regex used to validate the command string
 	 */
 	private static final String buildCommandsRegex() {
@@ -47,33 +48,32 @@ public class RobotInputValidator {
 		regex.append("]*$");
 		return regex.toString();
 	}
-	
-	public static boolean isValidCommandString(@NotNull final String commandString){
-		if(!isEmpty(commandString)){
+
+	public static boolean isValidCommandString(@NotNull final String commandString) {
+		if (!isEmpty(commandString)) {
 			return commandString.matches(REGEX_ACCEPTABLE_COMMANDS);
 		}
 		return false;
 	}
-	
-	public static boolean isValidInitialPosition(@NotNull final String initialPosition){
-		if(!isEmpty(initialPosition)){
+
+	public static boolean isValidInitialPosition(@NotNull final String initialPosition) {
+		if (!isEmpty(initialPosition)) {
 			return initialPosition.matches(REGEX_INITIAL_POSITION);
 		}
 		return false;
 	}
-	
-	
-	public static boolean isValidGridMaxPoint(String gridMaxPoint){
-		if(!isEmpty(gridMaxPoint)){
+
+	public static boolean isValidGridMaxPoint(String gridMaxPoint) {
+		if (!isEmpty(gridMaxPoint)) {
 			return gridMaxPoint.matches(REGEX_GRID_MAX_SETTING);
 		}
 		return false;
 	}
-	
-	public static boolean isEmpty(String str){
-		if(str == null || str.isEmpty()){
+
+	public static boolean isEmpty(String str) {
+		if (str == null || str.isEmpty()) {
 			return true;
 		}
 		return false;
-	}	}
-
+	}
+}

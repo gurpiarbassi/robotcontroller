@@ -1,29 +1,28 @@
 package com.gurps.robotcontrol.domain;
 
+/**
+ * Custom exception to indicate Grid perimeter has been breached.
+ * @author gurpiarbassi
+ *
+ */
 public class GridIndexOutOfBoundsException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	private int x;
-	private int y;
+	Point outOfBoundsPoint;
 	private String message;
-	
-	public GridIndexOutOfBoundsException(final int x, final int y, final String message) {
-		this.x = x;
-		this.y = y;
+
+	public GridIndexOutOfBoundsException(final Point outOfBoundsPoint, final String message) {
+		this.outOfBoundsPoint = outOfBoundsPoint;
 		this.message = message;
 	}
 
-	public int getX() {
-		return x;
+	public Point getOutOfBoundsPoint() {
+		return outOfBoundsPoint;
 	}
 
-	public int getY() {
-		return y;
+	public String getMessage() {
+		return String.format("Invalid input: [%s,%s] - %s", outOfBoundsPoint.getX(), outOfBoundsPoint.getY(), message);
 	}
-	
-	public String getMessage(){
-		return String.format("Invalid input: [%s,%s] - %s", x, y, message);
-	}
-	
+
 }
