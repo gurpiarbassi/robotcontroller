@@ -32,7 +32,6 @@ public class Point {
 	public void plusY(int y) {
 		this.y += y;
 	}
-	
 
 	@Override
 	public int hashCode() {
