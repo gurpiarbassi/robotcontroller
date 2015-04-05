@@ -1,6 +1,5 @@
 package com.gurps.robotcontrol;
 
-import java.io.IOException;
 import java.util.Queue;
 
 import com.gurps.robotcontrol.domain.Direction;
@@ -29,7 +28,7 @@ public class RobotController {
 	 *                thrown if any problem occurs in parsing the input file
 	 * 
 	 */
-	public static void main(String[] args)  {
+	public static void main(String[] args) {
 		try {
 			System.out.println("Starting Robot Program...");
 
@@ -38,18 +37,16 @@ public class RobotController {
 				return;
 			}
 			String inputFilename = args[0];
-			
-			//read the input file and extract out data objects
+
+			// read the input file and extract out data objects
 			InputFileReader reader = new InputFileReader(inputFilename);
 			reader.execute();
-			
-			
-			int xMaximum = reader.getxGridMax();
-			int yMaximum = reader.getyGridMax();
+
+			Point gridMaxPoint = reader.getGridMaxPoint();
 			Queue<RobotCommandPair> instructionQueue = reader.getInstructionQueue();
 
 			Grid grid = Grid.getInstance();
-			grid.init(xMaximum, yMaximum);
+			grid.init(gridMaxPoint);
 
 			for (int i = 0; i <= instructionQueue.size(); i++) {
 				RobotCommandPair rcPair = instructionQueue.poll();
@@ -58,15 +55,15 @@ public class RobotController {
 				String commands = rcPair.getCommands();
 				Robot robot = RobotFactory.createRobot(Integer.valueOf(positionTokens[0]),
 						Integer.valueOf(positionTokens[1]), positionTokens[2]);
-				
+
 				for (int j = 0; j < commands.length(); j++) {
 					robot.executeCommand(RobotCommand.valueOf(String.valueOf(commands.charAt(j))));
 				}
-				
+
 				Point finalPosition = robot.getPosition();
 				Direction finalDirection = robot.getDirection();
 				System.out.println(OutputFormatter.format(finalPosition, finalDirection));
-				
+
 			}
 
 		} catch (Exception e) {
