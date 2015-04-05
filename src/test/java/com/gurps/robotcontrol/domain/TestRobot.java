@@ -23,17 +23,12 @@ public class TestRobot {
 		Grid grid = Grid.getInstance();
 		grid.init(0, 0, 5, 5);
 		Robot robot = null;
+		String commands = "LMLMLMLMM";
 		try {
 			robot = RobotFactory.createRobot(1, 2, "N");
-			robot.turnLeft();
-			robot.forward();
-			robot.turnLeft();
-			robot.forward();
-			robot.turnLeft();
-			robot.forward();
-			robot.turnLeft();
-			robot.forward();
-			robot.forward();
+			for(int i = 0; i < commands.length(); i++){
+				robot.executeCommand(RobotCommand.valueOf(String.valueOf(commands.charAt(i))));
+			}
 			assertEquals(new Point(1, 3), robot.getPosition());
 			assertEquals(Direction.N, robot.getDirection());
 		} catch (GridIndexOutOfBoundsException gioobe) {
@@ -51,18 +46,12 @@ public class TestRobot {
 		Grid grid = Grid.getInstance();
 		grid.init(0, 0, 5, 5);
 		Robot robot = null;
+		String commands = "MMRMMRMRRM";
 		try {
 			robot = RobotFactory.createRobot(3, 3, "E");
-			robot.forward();
-			robot.forward();
-			robot.turnRight();
-			robot.forward();
-			robot.forward();
-			robot.turnRight();
-			robot.forward();
-			robot.turnRight();
-			robot.turnRight();
-			robot.forward();
+			for(int i = 0; i < commands.length(); i++){
+				robot.executeCommand(RobotCommand.valueOf(String.valueOf(commands.charAt(i))));
+			}
 			assertEquals(new Point(5, 1), robot.getPosition());
 			assertEquals(Direction.E, robot.getDirection());
 		} catch (GridIndexOutOfBoundsException gioobe) {
@@ -79,12 +68,12 @@ public class TestRobot {
 		Grid grid = Grid.getInstance();
 		grid.init(0, 0, 5, 5);
 		Robot robot = null;
+		String commands = "MMMR";
 		try {
 			robot = RobotFactory.createRobot(3, 3, "E");
-			robot.forward();
-			robot.forward();
-			robot.forward();
-			robot.turnRight();
+			for(int i = 0; i < commands.length(); i++){
+				robot.executeCommand(RobotCommand.valueOf(String.valueOf(commands.charAt(i))));
+			}
 			fail("Exception should have been caught here since robot has moved off the grid.");
 		} catch (GridIndexOutOfBoundsException gioobe) {
 			//gioobe.printStackTrace();
@@ -103,14 +92,12 @@ public class TestRobot {
 		Grid grid = Grid.getInstance();
 		grid.init(0, 0, 5, 5);
 		Robot robot = null;
+		String commands = "RRMMMM";
 		try {
 			robot = RobotFactory.createRobot(3, 3, "N");
-			robot.turnRight();
-			robot.turnRight();
-			robot.forward();
-			robot.forward();
-			robot.forward();
-			robot.forward();
+			for(int i = 0; i < commands.length(); i++){
+				robot.executeCommand(RobotCommand.valueOf(String.valueOf(commands.charAt(i))));
+			}
 			fail("Exception should have been caught here since robot has moved off the grid.");
 		} catch (GridIndexOutOfBoundsException gioobe) {
 			//gioobe.printStackTrace();
@@ -129,15 +116,13 @@ public class TestRobot {
 		Grid grid = Grid.getInstance();
 		grid.init(0, 0, 5, 5);
 		Robot robot = null;
+		String commands = "RRMMMM";
 		try {
 			robot = RobotFactory.createRobot(10, 10, "N");
 			fail("Exception should have been caught here since robot has started outside the grid area.");
-			robot.turnRight();
-			robot.turnRight();
-			robot.forward();
-			robot.forward();
-			robot.forward();
-			robot.forward();
+			for(int i = 0; i < commands.length(); i++){
+				robot.executeCommand(RobotCommand.valueOf(String.valueOf(commands.charAt(i))));
+			}
 		} catch (GridIndexOutOfBoundsException gioobe) {
 			//gioobe.printStackTrace();
 			assertNull(robot);

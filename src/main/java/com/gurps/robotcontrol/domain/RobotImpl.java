@@ -1,6 +1,5 @@
 package com.gurps.robotcontrol.domain;
 
-
 /**
  * Concrete implementation of Robot interface with Grid traversal behavior
  * 
@@ -39,57 +38,82 @@ public class RobotImpl implements Robot {
 		return direction;
 	}
 
-	@Override
-	public void turnLeft() {
+	private void turnLeft() {
 		direction = direction.left();
 	}
 
-	@Override
-	public void turnRight() {
+	private void turnRight() {
 		direction = direction.right();
 
 	}
 
-	@Override
 	/**
-	 * This method moves the robot forward one square in the direction it is facing.
-	 * @exception GridIndexOutOfBoundsException if the robot 'could' go off the grid with this movement forward.
+	 * This method moves the robot forward one square in the direction it is
+	 * facing.
+	 * 
+	 * @exception GridIndexOutOfBoundsException
+	 *                if the robot 'could' go off the grid with this movement
+	 *                forward.
 	 **/
-	public void forward()  {
+	private void forward() {
 		switch (direction) {
 		case N:
 			if (grid.isValidPosition(position.getX(), position.getY() + 1)) {
 				position.plusY(1);
 			} else {
-				throw new GridIndexOutOfBoundsException(position.getX(), position.getY() + 1, "Moving this way will take you to ("
-						+ position.getX() + "," + (position.getY() + 1) + ")");
+				throw new GridIndexOutOfBoundsException(position.getX(), position.getY() + 1,
+						"Moving this way will take you to (" + position.getX() + ","
+								+ (position.getY() + 1) + ")");
 			}
 			break;
 		case E:
 			if (grid.isValidPosition(position.getX() + 1, position.getY())) {
 				position.plusX(1);
 			} else {
-				throw new GridIndexOutOfBoundsException(position.getX() + 1, position.getY(), "Moving this way will take you to ("
-						+ (position.getX() + 1) + "," + position.getY() + ")");
+				throw new GridIndexOutOfBoundsException(position.getX() + 1, position.getY(),
+						"Moving this way will take you to (" + (position.getX() + 1) + ","
+								+ position.getY() + ")");
 			}
 			break;
 		case S:
 			if (grid.isValidPosition(position.getX(), position.getY() - 1)) {
 				position.plusY(-1);
 			} else {
-				throw new GridIndexOutOfBoundsException(position.getX(), position.getY() - 1, "Moving this way will take you to ("
-						+ position.getX() + "," + (position.getY() - 1) + ")");
+				throw new GridIndexOutOfBoundsException(position.getX(), position.getY() - 1,
+						"Moving this way will take you to (" + position.getX() + ","
+								+ (position.getY() - 1) + ")");
 			}
 			break;
 		case W:
 			if (grid.isValidPosition(position.getX() - 1, position.getY())) {
 				position.plusX(-1);
 			} else {
-				throw new GridIndexOutOfBoundsException(position.getX() - 1, position.getY(), "Moving this way will take you to ("
-						+ (position.getX() - 1) + "," + position.getY() + ")");
+				throw new GridIndexOutOfBoundsException(position.getX() - 1, position.getY(),
+						"Moving this way will take you to (" + (position.getX() - 1) + ","
+								+ position.getY() + ")");
 			}
 			break;
 		}
 
+	}
+
+	@Override
+	public void executeCommand(RobotCommand command) {
+		switch (command) {
+		case L:
+			turnLeft();
+			break;
+
+		case R:
+			turnRight();
+			break;
+
+		case M:
+			forward();
+			break;
+		
+		default :
+				throw new UnsupportedOperationException("operation " + command.name() + " is not supported by this robot implementation");
+		}
 	}
 }

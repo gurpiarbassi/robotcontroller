@@ -38,8 +38,12 @@ public class RobotController {
 				return;
 			}
 			String inputFilename = args[0];
+			
+			//read the input file and extract out data objects
 			InputFileReader reader = new InputFileReader(inputFilename);
 			reader.execute();
+			
+			
 			int xMaximum = reader.getxGridMax();
 			int yMaximum = reader.getyGridMax();
 			Queue<RobotCommandPair> instructionQueue = reader.getInstructionQueue();
@@ -54,23 +58,11 @@ public class RobotController {
 				String commands = rcPair.getCommands();
 				Robot robot = RobotFactory.createRobot(Integer.valueOf(positionTokens[0]),
 						Integer.valueOf(positionTokens[1]), positionTokens[2]);
+				
 				for (int j = 0; j < commands.length(); j++) {
-					switch (RobotCommand.valueOf(String.valueOf(commands.charAt(j)))) {
-					case R:
-						robot.turnRight();
-						break;
-
-					case L:
-						robot.turnLeft();
-						break;
-
-					case M:
-						robot.forward();
-						break;
-
-					}
-					
+					robot.executeCommand(RobotCommand.valueOf(String.valueOf(commands.charAt(j))));
 				}
+				
 				Point finalPosition = robot.getPosition();
 				Direction finalDirection = robot.getDirection();
 				System.out.println(OutputFormatter.format(finalPosition, finalDirection));

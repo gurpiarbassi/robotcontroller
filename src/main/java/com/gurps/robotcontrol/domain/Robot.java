@@ -7,12 +7,8 @@ package com.gurps.robotcontrol.domain;
  *
  */
 public interface Robot {
-
-	void turnLeft();
-
-	void turnRight();
-
-	void forward();
+	
+	void executeCommand(RobotCommand command);
 	
     Point getPosition() ;
 
