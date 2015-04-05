@@ -13,9 +13,9 @@ Where the path to the input file is the argument to the main class.
 
 ## Assumptions made
 
-Robots may collide with one another but we assume they trample over each other and carry on
+Robots may collide with one another but we assume they trample over each other and carry on.
 
-Assume that the input is always file based where all the data is first parsed and then consumed
+Assume that the input is always file based.
 
 Assuming that if an error occurs in validating the file, the system will exit
 
