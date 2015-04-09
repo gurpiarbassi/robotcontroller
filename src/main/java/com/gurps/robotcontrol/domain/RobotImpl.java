@@ -21,7 +21,7 @@ public class RobotImpl implements Robot {
 	 * @param direction
 	 *            the current direction the robot is facing
 	 */
-	public RobotImpl(final Point initialPosition, final Direction direction) {
+	protected RobotImpl(final Point initialPosition, final Direction direction) {
 		super();
 		grid = Grid.getInstance();
 		this.position = initialPosition;
