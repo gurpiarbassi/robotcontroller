@@ -14,15 +14,20 @@ public final class Grid {
 	Point gridMinPoint;
 	Point gridMaxPoint;
 
-	private static Grid INSTANCE = null;
 	private static final Point DEFAULT_GRID_MIN = new Point(0, 0);
 	private static final Point DEFAULT_GRID_MAX = new Point(5, 5);
+	
+	/**
+	 * Loaded class for synchronization to singleton access
+	 * @author gurpiarbassi
+	 *
+	 */
+	private static class GridLoader {
+        private static Grid INSTANCE = new Grid();
+    }
 
 	public static Grid getInstance() {
-		if (INSTANCE == null) {
-			INSTANCE = new Grid();
-		}
-		return INSTANCE;
+		return GridLoader.INSTANCE;
 	}
 
 	private Grid() {
@@ -87,4 +92,11 @@ public final class Grid {
 		}
 		return true;
 	}
+	
+	/**
+	 * Ensure this singleton can never be cloned in case it is used in the future to extend a cloneable superclass.
+	 */
+	public Object clone() throws CloneNotSupportedException {
+	    throw new CloneNotSupportedException();
+	  }
 }
