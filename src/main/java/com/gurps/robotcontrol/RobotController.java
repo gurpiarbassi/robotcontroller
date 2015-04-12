@@ -1,5 +1,6 @@
 package com.gurps.robotcontrol;
 
+import java.io.IOException;
 import java.util.Queue;
 
 import com.gurps.robotcontrol.domain.Direction;
@@ -23,13 +24,14 @@ public class RobotController {
 	 * It is assumed that the file needs to be completely parsed first before
 	 * 
 	 * @param args
-	 *            contains the absolute filepath for the robot instructions
+	 *            contains the absolute file path for the robot instructions
+	 * @throws IOException if there is a problem reading the input file
 	 * @exception Exception
 	 *                thrown if any problem occurs in parsing the input file
 	 * 
 	 */
-	public static void main(String[] args) {
-		try {
+	public static void main(String[] args) throws IOException {
+		//try {
 			System.out.println("Starting Robot Program...");
 
 			if (args.length <= 0) {
@@ -65,11 +67,6 @@ public class RobotController {
 				System.out.println(OutputFormatter.format(finalPosition, finalDirection));
 
 			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
 			System.out.println("Ending Robot Program...");
-		}
 	}
 }

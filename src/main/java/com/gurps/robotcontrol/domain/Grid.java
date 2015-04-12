@@ -51,6 +51,8 @@ public final class Grid {
 		}
 		init(DEFAULT_GRID_MIN, gridMaxPoint);
 	}
+	
+	
 
 	/**
 	 * Creates a grid given all 4 upper and lower bound points. Using this
@@ -99,4 +101,6 @@ public final class Grid {
 	public Object clone() throws CloneNotSupportedException {
 	    throw new CloneNotSupportedException();
 	  }
+	
+	
 }
