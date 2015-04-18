@@ -1,6 +1,5 @@
 package com.gurps.robotcontrol.domain;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * Factory class for Robot creation
@@ -22,7 +21,7 @@ public class RobotFactory {
 	 * @exception GridIndexOutOfBoundsException
 	 *                is the robot is created outside the grid area
 	 */
-	public static Robot createRobot(int xCoordinate, int yCoordinate, @NotNull String direction) {
+	public static Robot createRobot(int xCoordinate, int yCoordinate, String direction) {
 		Grid grid = Grid.getInstance();
 		Point point = new Point(xCoordinate, yCoordinate);
 		if (!grid.isValidPosition(point)) {
@@ -41,7 +40,7 @@ public class RobotFactory {
 	 * @exception GridIndexOutOfBoundsException
 	 *                is the robot is created outside the grid area
 	 */
-	public static Robot createRobot(int xCoordinate, int yCoordinate, @NotNull Direction direction) {
+	public static Robot createRobot(int xCoordinate, int yCoordinate, Direction direction) {
 		Grid grid = Grid.getInstance();
 		Point point = new Point(xCoordinate, yCoordinate);
 		if (!grid.isValidPosition(point)) {

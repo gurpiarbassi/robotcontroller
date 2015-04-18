@@ -7,8 +7,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-import javax.validation.constraints.NotNull;
-
 import com.gurps.robotcontrol.domain.Point;
 import com.gurps.robotcontrol.validation.InvalidInputException;
 import com.gurps.robotcontrol.validation.RobotInputValidator;
@@ -20,7 +18,7 @@ public class InputFileReader {
 	
 	private Queue<RobotCommandPair> instructionQueue = new LinkedList<RobotCommandPair>();
 
-	public InputFileReader(@NotNull String inputFilename) {
+	public InputFileReader(String inputFilename) {
 		this.inputFilename = inputFilename;
 	}
 
